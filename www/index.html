@@ -208,20 +208,30 @@
             //alert(window.localStorage.getItem("key"));
 
             //window.localStorage.removeItem("key");
-            
+
             //window.localStorage.setItem("USERLOGIN_GRANTED", "YES");
             //window.localStorage.setItem("USERLOGIN_GRANTED", "NO");
-            
-            var userLogin_Granted = false;
-            if ( window.localStorage.getItem("USERLOGIN_GRANTED") == "YES" ){
-                userLogin_Granted = true;
-            }
-            
-            if ( userLogin_Granted ){
-                $("#appmobile_loginForm").css("display", "none");
-                $("#appmobile_loginForm_Granted").css("display", "block");
-            }
-            
+
+
+            document.addEventListener("deviceready", function () {
+                /*
+                 var userLogin_Granted = false;
+                 if (window.localStorage.getItem("USERLOGIN_GRANTED") == "YES") {
+                 userLogin_Granted = true;
+                 }
+                 
+                 if (userLogin_Granted) {
+                 $("#appmobile_loginForm").css("display", "none");
+                 $("#appmobile_loginForm_Granted").css("display", "block");
+                 }
+                 */
+                
+                cordova.getAppVersion().then(function (version) {
+                    alert(version);
+                });
+
+
+            });
         </script>
 
 
