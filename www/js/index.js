@@ -37,18 +37,10 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-        var parentElement = document.getElementById(id);
-        //var listeningElement = parentElement.querySelector('.listening');
-        //var receivedElement = parentElement.querySelector('.received');
+        // plugin_batteryStatus();
 
-        //listeningElement.setAttribute('style', 'display:none;');
-        //receivedElement.setAttribute('style', 'display:block;');
 
-        window.addEventListener("batterystatus", onBatteryStatus, false);
-        function onBatteryStatus(info) {
-            // Handle the online event
-            alert(info.level + " isPlugged: " + info.isPlugged);
-        }
+
 
         console.log('Received Event: ' + id);
     }

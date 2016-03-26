@@ -19,3 +19,9 @@ function onlyNumbers(event) {
         return true;
 }
 
+
+window.addEventListener("batterystatus", onBatteryStatus, false);
+function onBatteryStatus(info) {
+    // Handle the online event
+    alert(info.level + " isPlugged: " + info.isPlugged);
+}
