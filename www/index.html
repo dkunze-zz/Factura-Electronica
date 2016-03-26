@@ -7,7 +7,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
         <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="apple-touch-startup-image-640x1096.html">
-        <title>mobix - mobile web app template</title>
+        <title>Tu Factura Electronica | Prysma Software</title>
         <link rel="stylesheet" href="css/framework7.css">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="css/colors/magenta.css">
@@ -44,6 +44,7 @@
             </div>
         </div>-->
 
+        <!--
         <div class="panel panel-right panel-cover"> 
 
             <h2>Search</h2>
@@ -73,7 +74,7 @@
                     <span><a href="blog-single.html" class="close-panel">Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</a></span>        </li>
             </ul>
         </div>
-
+        -->
         <div class="views">
 
             <div class="view view-main">
@@ -105,7 +106,7 @@
 
         <!-- Login Popup -->
         <div class="popup popup-login">
-            <div class="content-block-login">
+            <div class="content-block-login" id="appmobile_loginForm">
                 <h4>INGRESAR</h4>
                 <div class="form_logo"><img src="images/newfelogo.png" alt="" title="" /></div>
                 <div class="loginform">
@@ -117,10 +118,13 @@
                     </form>
                     <div class="signup_bottom">
                         <p>¿No tiene cuenta?</p>
-                        <a href="https://tufacturaelectronica.net/solicitar-prueba" data-popup=".popup-signup" class="open-popup">Reg&iacute;strate</a>
+                        <a href="https://tufacturaelectronica.net/solicitar-prueba" class="external">Reg&iacute;strate</a>
                     </div>
                 </div>
                 <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
+            </div>
+            <div class="content-block-login" id="appmobile_loginForm_Granted" style="display:none;">
+                Bienvenido, usuario!
             </div>
         </div>
 
@@ -146,7 +150,7 @@
             </div>
         </div>
         -->
-        
+
         <!-- Login Popup -->
         <div class="popup popup-forgot">
             <div class="content-block-login">
@@ -154,8 +158,8 @@
                 <div class="form_logo"><img src="images/newfelogo.png" alt="" title="" /></div>
                 <div class="loginform">
                     <form id="ForgotForm" method="post">
-                        <input type="text" name="Email" value="" class="form_input required" placeholder="email" />
-                        <input type="submit" name="submit" class="form_submit" id="submit" value="RESEND PASSWORD" />
+                        <input type="text" name="Email" value="" class="form_input required" placeholder="Cuit/Cuil" onkeypress="return onlyNumbers(event);"  />
+                        <input type="submit" name="submit" class="form_submit" id="submit" value="Recuperar Contrase&ntilde;a" />
                     </form>
                     <div class="signup_bottom">
                         <p>Revisa su e-mail para actualizar su contrase&ntilde;a</p>
@@ -204,7 +208,20 @@
             //alert(window.localStorage.getItem("key"));
 
             //window.localStorage.removeItem("key");
-
+            
+            //window.localStorage.setItem("USERLOGIN_GRANTED", "YES");
+            //window.localStorage.setItem("USERLOGIN_GRANTED", "NO");
+            
+            var userLogin_Granted = false;
+            if ( window.localStorage.getItem("USERLOGIN_GRANTED") == "YES" ){
+                userLogin_Granted = true;
+            }
+            
+            if ( userLogin_Granted ){
+                $("#appmobile_loginForm").css("display", "none");
+                $("#appmobile_loginForm_Granted").css("display", "block");
+            }
+            
         </script>
 
 
