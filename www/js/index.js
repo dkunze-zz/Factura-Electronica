@@ -43,9 +43,9 @@ var app = {
 
         //listeningElement.setAttribute('style', 'display:none;');
         //receivedElement.setAttribute('style', 'display:block;');
-        app.getAppVersion().then(function (version) {
-            alert(version);
-        });
+
+        alert( app.getAppVersion() );
+
         console.log('Received Event: ' + id);
     }
 };
