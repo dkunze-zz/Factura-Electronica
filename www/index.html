@@ -240,10 +240,11 @@
                     encode: true,
                     success: function (data)
                     {
-                        alert(data["success"] + " -- " + data["message"] + " -- " + data);
+                        alert(data["success"] + " -- " + data["message"] + " -- " + data + " -- " + data["errors"]);
 
                         if (data["errors"] == "")
                         {
+                            alert("Login OK.");
                             $("#loginform_submit_btn").attr("disabled", "disabled");
 
                             window.localStorage.setItem("USERLOGIN_GRANTED", "YES");
