@@ -12,12 +12,8 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="css/colors/magenta.css">
         <link type="text/css" rel="stylesheet" href="css/swipebox.css" />
-        <link type="text/css" rel="stylesheet" href="css/animations.css" />
-        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,900' rel='stylesheet' type='text/css'>
+        <link type="text/css" rel="stylesheet" href="css/animations.css" />        
         <style>
-            /* Paste this css to your style sheet file or under head tag */
-            /* This only works with JavaScript, 
-            if it's not present, don't show loader */
             .no-js #loader { display: none;  }
             .js #loader { display: block; position: absolute; left: 100px; top: 0; }
             .se-pre-con {
@@ -128,7 +124,7 @@
                 <h4>INGRESAR</h4>
                 <div class="form_logo"><img src="images/newfelogo.png" alt="" title="" /></div>
                 <div class="loginform">
-                    <form id="LoginForm" method="post">
+                    <form id="LoginForm">
                         <input type="number" name="login_cuit" id="login_cuit" value="" maxlength="11" class="form_input required" placeholder="Ingrese su cuit/cuil"  onkeypress="return onlyNumbers(event);"/>
                         <input type="password" name="login_password" id="login_password" value="" class="form_input required" placeholder="Contrase&ntilde;a" />
                         <div class="forgot_pass"><a href="#" data-popup=".popup-forgot" class="open-popup">¿Olvid&oacute; su contrase&ntilde;a?</a></div>
@@ -252,28 +248,24 @@
 
                 var url = "https://tufacturaelectronica.net/appmobile/ajaxcalls/login.php";
                 $.ajax({
-                    type: "POST",
+                    type: "get",
                     url: url,
                     data: formData, // serializes the form's elements.
                     dataType: 'json', // what type of data do we expect back from the server
                     success: function (data)
                     {
-                        //var parsed_data = jQuery.parseJSON(data);
                         var parsed_data = data;
                         
                         $(".se-pre-con").fadeOut();
-                        alert(parsed_data.success + " -- " + parsed_data.message + " -- " + data + " -- " + parsed_data.errors);
+                        //alert(parsed_data["success"] + " -- " + parsed_data["message"] + " -- " + parsed_data + " -- " + parsed_data["errors"]);
 
-                        if (parsed_data.errors == "")
+                        if (parsed_data["errors"] == "")
                         {
-                            alert("Login OK.");
                             $("#loginform_submit_btn").attr("disabled", "disabled");
 
                             window.localStorage.setItem("USERLOGIN_GRANTED", "YES");
                             location.href = 'index.html';
                         } else {
-                            $("#loginform_submit_btn").removeattr("disabled");
-
                             alert("Existe un error en su cuenta. Por favor, vuelva a intentarlo.");
                             window.localStorage.setItem("USERLOGIN_GRANTED", "NO");
                         }

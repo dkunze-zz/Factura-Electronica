@@ -1,17 +1,17 @@
 <?php
+
 #ref - https://scotch.io/tutorials/submitting-ajax-forms-with-jquery
 
 $errors = array();      // array to hold validation errors
 $data = array();      // array to pass back data
-// validate the variables ======================================================
-// if any of these variables don't exist, add an error to our $errors array
 
-if (empty($_POST['login_cuit']))
+if (empty($_GET['login_cuit'])) {
     $errors['login_cuit'] = 'El Cuit o Cuil es requerido.';
+}
 
-if (empty($_POST['login_password']))
+if (empty($_GET['login_password'])) {
     $errors['login_password'] = 'La Contraseña es requerida.';
-
+}
 
 // return a response ===========================================================
 // if there are any errors in our errors array, return a success boolean of false
@@ -24,13 +24,22 @@ if (!empty($errors)) {
     // DO ALL YOUR FORM PROCESSING HERE
     // THIS CAN BE WHATEVER YOU WANT TO DO (LOGIN, SAVE, UPDATE, WHATEVER)
     // show a message of success and provide a true success variable
-    
-    
-    
-    $data['success'] = true;
-    $data['message'] = 'Login Exitoso';
-    $data['errors'] = "";
+
+    require( "/var/www/html/inc/functions.inc.php" );
+    $mysqli = mysqliconnector();
+    $mysqli->query("USE " . DB_DATABASESYSTEM);
+    $qSearchUser = $mysqli->query("SELECT * FROM fe_users WHERE usuario = '" . mysqli_real_escape_string($mysqli, $_GET['login_cuit']) . "' AND password = '" . md5(mysqli_real_escape_string($mysqli, $_GET['login_password'])) . "' ");
+    $qSearchUserResult = $qSearchUser->num_rows;
+    if ($qSearchUserResult > 0) {
+        $data['success'] = true;
+        $data['message'] = 'Login Exitoso';
+        $data['errors'] = "";
+    } else {
+        $data['success'] = false;
+        $data['errors'] = "Error en el usuario y/o contraseña";
+    }
 }
 
 // return all our data to an AJAX call
 echo json_encode($data);
+?>
