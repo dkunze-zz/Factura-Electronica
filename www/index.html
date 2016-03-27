@@ -227,11 +227,17 @@
 
 
             $("#LoginForm").submit(function (e) {// this is the id of the form
+                var formData = {
+                    'login_cuit': $("#login_cuit").val(),
+                    'login_password': $('#login_password').val()
+                };
                 var url = "https://tufacturaelectronica.net/appmobile/ajaxcalls/login.php";
                 $.ajax({
                     type: "POST",
                     url: url,
-                    data: $("#LoginForm").serialize(), // serializes the form's elements.
+                    data: formData, // serializes the form's elements.
+                    dataType: 'json', // what type of data do we expect back from the server
+                    encode: true,
                     success: function (data)
                     {
                         alert(data); // show response from the php script.
