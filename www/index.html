@@ -259,10 +259,12 @@
                     encode: true,
                     success: function (data)
                     {
+                        var parsed_data = JSON.parse(data);
+                        
                         $(".se-pre-con").fadeOut("slow");
-                        alert(data["success"] + " -- " + data["message"] + " -- " + data + " -- " + data["errors"]);
+                        alert(parsed_data.success + " -- " + parsed_data.message + " -- " + data + " -- " + parsed_data.errors);
 
-                        if (data["errors"] == "undefined")
+                        if (parsed_data.errors == "")
                         {
                             alert("Login OK.");
                             $("#loginform_submit_btn").attr("disabled", "disabled");
