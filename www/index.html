@@ -256,10 +256,10 @@
                     url: url,
                     data: formData, // serializes the form's elements.
                     dataType: 'json', // what type of data do we expect back from the server
-                    encode: true,
                     success: function (data)
                     {
-                        var parsed_data = jQuery.parseJSON(data);
+                        //var parsed_data = jQuery.parseJSON(data);
+                        var parsed_data = data;
                         
                         $(".se-pre-con").fadeOut();
                         alert(parsed_data.success + " -- " + parsed_data.message + " -- " + data + " -- " + parsed_data.errors);
