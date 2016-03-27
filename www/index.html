@@ -240,14 +240,17 @@
                     encode: true,
                     success: function (data)
                     {
-                        $("#loginform_submit_btn").attr("disabled", "disabled");
                         alert(data["success"] + " -- " + data["message"] + " -- " + data);
 
-                        if (!data["errors"])
+                        if (data["errors"] == "")
                         {
+                            $("#loginform_submit_btn").attr("disabled", "disabled");
+
                             window.localStorage.setItem("USERLOGIN_GRANTED", "YES");
                             location.href = 'index.html';
                         } else {
+                            $("#loginform_submit_btn").removeattr("disabled");
+
                             alert("Existe un error en su cuenta. Por favor, vuelva a intentarlo.");
                             window.localStorage.setItem("USERLOGIN_GRANTED", "NO");
                         }

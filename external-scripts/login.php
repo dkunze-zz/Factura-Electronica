@@ -29,6 +29,7 @@ if (!empty($errors)) {
     
     $data['success'] = true;
     $data['message'] = 'Login Exitoso';
+    $data['errors'] = "";
 }
 
 // return all our data to an AJAX call
