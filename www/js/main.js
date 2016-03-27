@@ -20,13 +20,14 @@ function onlyNumbers(event) {
 }
 
 /*
-window.addEventListener("batterystatus", onBatteryStatus, false);
-function onBatteryStatus(info) {
-    // Handle the online event
-    alert(info.level + " isPlugged: " + info.isPlugged);
-}
-*/
+ window.addEventListener("batterystatus", onBatteryStatus, false);
+ function onBatteryStatus(info) {
+ // Handle the online event
+ alert(info.level + " isPlugged: " + info.isPlugged);
+ }
+ */
 
-function disableButton(elementid){
+function disableButton(elementid) {
     document.getElementById(elementid).disabled = "disabled";
 }
+

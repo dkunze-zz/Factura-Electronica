@@ -45,3 +45,16 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+
+// Beep three times
+function playBeep() {
+    app.notification.beep(3);
+    app.notification.vibrate(2500);
+}
+
+// Vibrate for 2 seconds
+//
+function vibrate() {
+    app.notification.vibrate(1000);
+}
