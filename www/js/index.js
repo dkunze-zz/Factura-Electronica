@@ -47,7 +47,7 @@ var app = {
 };
 
 
-// Vibrate for 1 seconds
+// Vibrate for 1 seconds -- https://github.com/apache/cordova-plugin-vibration
 function vibrate() {
     alert("aa");
     app.vibrate(3000);
