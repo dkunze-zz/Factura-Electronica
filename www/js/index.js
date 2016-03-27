@@ -39,7 +39,7 @@ var app = {
     receivedEvent: function (id) {
         // plugin_batteryStatus();
 
-
+        // call everything of you want.
 
 
         console.log('Received Event: ' + id);
