@@ -26,3 +26,7 @@ function onBatteryStatus(info) {
     alert(info.level + " isPlugged: " + info.isPlugged);
 }
 */
+
+function disableButton(elementid){
+    document.getElementById(elementid).disabled = "disabled";
+}
