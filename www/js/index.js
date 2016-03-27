@@ -53,8 +53,9 @@ function playBeep() {
     app.notification.vibrate(2500);
 }
 
-// Vibrate for 2 seconds
+// Vibrate for 1 seconds
 //
 function vibrate() {
+    alert("aa");
     app.notification.vibrate(1000);
 }
