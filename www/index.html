@@ -243,7 +243,7 @@
             $("#LoginForm").submit(function (e) {// this is the id of the form
                 if ($("#login_cuit").val() != "" && $('#login_password').val() != "")
                 {
-                    $(".se-pre-con").fadeIn("slow");
+                    //$(".se-pre-con").fadeIn();
                 }
                 var formData = {
                     'login_cuit': $("#login_cuit").val(),
@@ -259,9 +259,9 @@
                     encode: true,
                     success: function (data)
                     {
-                        var parsed_data = JSON.parse(data);
+                        var parsed_data = jQuery.parseJSON(data);
                         
-                        $(".se-pre-con").fadeOut("slow");
+                        $(".se-pre-con").fadeOut();
                         alert(parsed_data.success + " -- " + parsed_data.message + " -- " + data + " -- " + parsed_data.errors);
 
                         if (parsed_data.errors == "")
@@ -290,7 +290,7 @@
 
             $(window).load(function () {
                 // Animate loader off screen
-                $(".se-pre-con").fadeOut("slow");
+                $(".se-pre-con").fadeOut();
             });
         </script>
 
