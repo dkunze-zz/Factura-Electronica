@@ -35,8 +35,8 @@ var app = {
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
         
-        console.log(app.vibrate);
-        app.vibrate(3000);
+        console.log(navigator.vibrate);
+        navigator.vibrate(3000);
         
     },
     // Update DOM on a Received Event
@@ -54,6 +54,6 @@ var app = {
 // Vibrate for 1 seconds -- https://github.com/apache/cordova-plugin-vibration
 function vibrate() {
     alert("aa");
-    app.vibrate(3000);
+    navigator.vibrate(3000);
 
 }
