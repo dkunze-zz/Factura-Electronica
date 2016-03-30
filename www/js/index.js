@@ -51,7 +51,15 @@ var app = {
 };
 
 
-// Vibrate for 1 seconds -- https://github.com/apache/cordova-plugin-vibration
+// Vibrate for 1 miliseconds -- https://github.com/apache/cordova-plugin-vibration
 function vibrate() {
-    navigator.vibrate(500);
+    navigator.vibrate(100);
+}
+
+function logout()
+{
+    if ( confirm("¿Seguro que desea salir?")){
+        window.localStorage.removeItem("USERLOGIN_GRANTED");
+        location.href = '/index.html';
+    }
 }
