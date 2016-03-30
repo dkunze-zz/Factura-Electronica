@@ -34,6 +34,21 @@ if (!empty($errors)) {
         $data['success'] = true;
         $data['message'] = 'Login Exitoso';
         $data['errors'] = "";
+
+        //row->fetch_assoc(): --> fill them
+        $data['USERPROFILE_NOMBRECOMPLETO'] = "";
+        $data['USERPROFILE_NOMBREFANTASIA'] = "";
+        $data['USERPROFILE_IDENTIFICADOR'] = "";
+        $data['USERPROFILE_TIPOIDENTIFICADOR'] = "";
+        $data['USERPROFILE_INGRESOSBRUTOS'] = "";
+        $data['USERPROFILE_PUNTODEVENTA'] = "";
+        $data['USERPROFILE_DOMICILIOCOMERCIAL'] = "";
+        $data['USERPROFILE_TELEFONO'] = "";
+        $data['USERPROFILE_INICIOACTIVIDADES'] = "";
+        $data['USERPROFILE_CONDICIONFRENTEALIVA'] = "";
+        $data['USERPROFILE_LEYENDAFACTURA'] = "";
+        $data['USERPROFILE_EMAIL'] = "";
+        
     } else {
         $data['success'] = false;
         $data['errors'] = "Error en el usuario y/o contraseña";

@@ -208,8 +208,8 @@
                 <p>¿Seguro que desea desconectarse de la aplicaci&oacute;n? Se borrar&aacute;n todos los datos (solamente) del telefono. ¿Desea continuar?</p>
                 <input class="form_submit" id="loginform_submit_btn" value="SI" onclick="vibrate();logout()" readonly="readonly"/>
                 <input class="form_submit close-popup" id="loginform_submit_btn" value="NO" onclick="" readonly="readonly"/>
-                 
-                
+
+
             </div>
         </div>
 
@@ -225,7 +225,7 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
-                            app.initialize();
+                    app.initialize();
         </script>
 
         <script>
@@ -267,7 +267,7 @@
                     success: function (data)
                     {
                         var parsed_data = data;
-                        
+
                         $(".se-pre-con").fadeOut();
                         //alert(parsed_data["success"] + " -- " + parsed_data["message"] + " -- " + parsed_data + " -- " + parsed_data["errors"]);
 
@@ -276,13 +276,24 @@
                             $("#loginform_submit_btn").attr("disabled", "disabled");
 
                             window.localStorage.setItem("USERLOGIN_GRANTED", "YES");
+                            window.localStorage.setItem("USERPROFILE_NOMBRECOMPLETO", parsed_data["USERPROFILE_NOMBRECOMPLETO"]);
+                            window.localStorage.setItem("USERPROFILE_NOMBREFANTASIA", parsed_data["USERPROFILE_NOMBREFANTASIA"]);
+                            window.localStorage.setItem("USERPROFILE_IDENTIFICADOR", parsed_data["USERPROFILE_IDENTIFICADOR"]);
+                            window.localStorage.setItem("USERPROFILE_TIPOIDENTIFICADOR", parsed_data["USERPROFILE_TIPOIDENTIFICADOR"]);
+                            window.localStorage.setItem("USERPROFILE_INGRESOSBRUTOS", parsed_data["USERPROFILE_INGRESOSBRUTOS"]);
+                            window.localStorage.setItem("USERPROFILE_PUNTODEVENTA", parsed_data["USERPROFILE_PUNTODEVENTA"]);
+                            window.localStorage.setItem("USERPROFILE_DOMICILIOCOMERCIAL", parsed_data["USERPROFILE_DOMICILIOCOMERCIAL"]);
+                            window.localStorage.setItem("USERPROFILE_TELEFONO", parsed_data["USERPROFILE_TELEFONO"]);
+                            window.localStorage.setItem("USERPROFILE_INICIOACTIVIDADES", parsed_data["USERPROFILE_INICIOACTIVIDADES"]);
+                            window.localStorage.setItem("USERPROFILE_CONDICIONFRENTEALIVA", parsed_data["USERPROFILE_CONDICIONFRENTEALIVA"]);
+                            window.localStorage.setItem("USERPROFILE_LEYENDAFACTURA", parsed_data["USERPROFILE_LEYENDAFACTURA"]);
+                            window.localStorage.setItem("USERPROFILE_EMAIL", parsed_data["USERPROFILE_EMAIL"]);
+
                             location.href = 'index.html';
                         } else {
                             alert("Existe un error en su cuenta. Por favor, vuelva a intentarlo.");
-                            window.localStorage.setItem("USERLOGIN_GRANTED", "NO");
+                            resetAndClearLocalStorage();
                         }
-
-
                     },
                     error: function () {
                         alert("Error con la conexion al servidor. Revise su conexion a Internet");
@@ -293,14 +304,11 @@
             });
 
             $(window).load(function () {
-                // Animate loader off screen
-                $(".se-pre-con").fadeOut();
+                $(".se-pre-con").fadeOut();// Animate loader off screen
+
+                loadUserProfile(); // load PROFILE section
+
             });
         </script>
-
-
-
     </body>
-
-
 </html>
