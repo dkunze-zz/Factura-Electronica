@@ -31,8 +31,8 @@
             cache: true,
             cacheIgnore: [],
             cacheIgnoreGetParameters: false,
-            cacheDuration: 1000 * 60 * 10, // Ten minutes 
-            preloadPreviousPage: true,
+            cacheDuration: 1000 * 60 * 60, // 60 minutes 
+            preloadPreviousPage: false,
             uniqueHistory: false,
             uniqueHistoryIgnoreGetParameters: false,
             dynamicPageUrl: 'content-{{index}}',
@@ -68,7 +68,7 @@
             hideNavbarOnPageScroll: false,
             hideToolbarOnPageScroll: false,
             hideTabbarOnPageScroll: false,
-            showBarsOnPageScrollEnd: true,
+            showBarsOnPageScrollEnd: false,
             // Swipeout
             swipeout: true,
             swipeoutActionsNoFold: false,
@@ -97,14 +97,14 @@
             panelsCloseByOutside: true,
             // Modals
             modalButtonOk: 'OK',
-            modalButtonCancel: 'Cancel',
-            modalUsernamePlaceholder: 'Username',
-            modalPasswordPlaceholder: 'Password',
+            modalButtonCancel: 'Cancelar',
+            modalUsernamePlaceholder: 'Usuario',
+            modalPasswordPlaceholder: 'Clave',
             modalTitle: 'Framework7',
             modalCloseByOutside: false,
             actionsCloseByOutside: true,
             popupCloseByOutside: true,
-            modalPreloaderTitle: 'Loading... ',
+            modalPreloaderTitle: 'Cargando... ',
             modalStack: true,
             // Lazy Load
             imagesLazyLoadThreshold: 0,

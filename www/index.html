@@ -274,12 +274,13 @@
                         if (parsed_data["errors"] == "")
                         {
                             $("#loginform_submit_btn").attr("disabled", "disabled");
-                            
+
                             saveUserLogin();
                             saveUserProfile(parsed_data);
                             saveUserResumen(parsed_data);
 
                             location.href = 'index.html';
+                            //location.reload();
                         } else {
                             alert("Existe un error en su cuenta. Por favor, vuelva a intentarlo.");
                             resetAndClearLocalStorage();
@@ -293,12 +294,11 @@
                 e.preventDefault(); // avoid to execute the actual submit of the form.
             });
 
+
             $(window).load(function () {
                 $(".se-pre-con").fadeOut();// Animate loader off screen
-
                 loadUserProfile(); // load PROFILE section
                 loadUserResumen(); // load RESUMEN section
-
             });
         </script>
     </body>

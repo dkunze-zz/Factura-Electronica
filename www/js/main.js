@@ -1,12 +1,3 @@
-function login() {
-    var login_cuit = document.getElementById("login_cuit").value;
-    var login_password = document.getElementById("login_password").value;
-
-    // make an ajax call
-
-    alert(login_cuit);
-}
-
 function onlyNumbers(event) {
     var key = window.event ? event.keyCode : event.which;
 

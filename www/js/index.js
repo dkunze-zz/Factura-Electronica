@@ -37,7 +37,6 @@ var app = {
 
         console.log(navigator.vibrate);
         navigator.vibrate(100);
-
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
@@ -164,6 +163,11 @@ function loadUserResumen() {
     }
 }
 
-function refreshPage() {
-    location.reload();
+function refreshPage(page) {
+    if (page === null) {
+        location.reload();
+    } else {        
+        //location.reload();
+        //location.href = 'index.html#!/'+page; // does not work.
+    }
 }
