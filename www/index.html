@@ -274,20 +274,10 @@
                         if (parsed_data["errors"] == "")
                         {
                             $("#loginform_submit_btn").attr("disabled", "disabled");
-
-                            window.localStorage.setItem("USERLOGIN_GRANTED", "YES");
-                            window.localStorage.setItem("USERPROFILE_NOMBRECOMPLETO", parsed_data["USERPROFILE_NOMBRECOMPLETO"]);
-                            window.localStorage.setItem("USERPROFILE_NOMBREFANTASIA", parsed_data["USERPROFILE_NOMBREFANTASIA"]);
-                            window.localStorage.setItem("USERPROFILE_IDENTIFICADOR", parsed_data["USERPROFILE_IDENTIFICADOR"]);
-                            window.localStorage.setItem("USERPROFILE_TIPOIDENTIFICADOR", parsed_data["USERPROFILE_TIPOIDENTIFICADOR"]);
-                            window.localStorage.setItem("USERPROFILE_INGRESOSBRUTOS", parsed_data["USERPROFILE_INGRESOSBRUTOS"]);
-                            window.localStorage.setItem("USERPROFILE_PUNTODEVENTA", parsed_data["USERPROFILE_PUNTODEVENTA"]);
-                            window.localStorage.setItem("USERPROFILE_DOMICILIOCOMERCIAL", parsed_data["USERPROFILE_DOMICILIOCOMERCIAL"]);
-                            window.localStorage.setItem("USERPROFILE_TELEFONO", parsed_data["USERPROFILE_TELEFONO"]);
-                            window.localStorage.setItem("USERPROFILE_INICIOACTIVIDADES", parsed_data["USERPROFILE_INICIOACTIVIDADES"]);
-                            window.localStorage.setItem("USERPROFILE_CONDICIONFRENTEALIVA", parsed_data["USERPROFILE_CONDICIONFRENTEALIVA"]);
-                            window.localStorage.setItem("USERPROFILE_LEYENDAFACTURA", parsed_data["USERPROFILE_LEYENDAFACTURA"]);
-                            window.localStorage.setItem("USERPROFILE_EMAIL", parsed_data["USERPROFILE_EMAIL"]);
+                            
+                            saveUserLogin();
+                            saveUserProfile(parsed_data);
+                            saveUserResumen(parsed_data);
 
                             location.href = 'index.html';
                         } else {
@@ -307,6 +297,7 @@
                 $(".se-pre-con").fadeOut();// Animate loader off screen
 
                 loadUserProfile(); // load PROFILE section
+                loadUserResumen(); // load RESUMEN section
 
             });
         </script>
