@@ -60,7 +60,7 @@ function logout()
 {
     if (confirm("¿Seguro que desea salir?")) {
         window.localStorage.removeItem("USERLOGIN_GRANTED");
-        location.href = '../index.html';
+        location.href = 'index.html';
     }
 }
 
