@@ -66,7 +66,10 @@ function logout()
 
 function resetAndClearLocalStorage()
 {
+    //LOGIN
     window.localStorage.setItem("USERLOGIN_GRANTED", "NO");
+
+    //PROFILE
     window.localStorage.removeItem("USERPROFILE_NOMBRECOMPLETO");
     window.localStorage.removeItem("USERPROFILE_NOMBREFANTASIA");
     window.localStorage.removeItem("USERPROFILE_IDENTIFICADOR");
@@ -80,7 +83,7 @@ function resetAndClearLocalStorage()
     window.localStorage.removeItem("USERPROFILE_LEYENDAFACTURA");
     window.localStorage.removeItem("USERPROFILE_EMAIL");
 
-
+    // RESUMEN
     window.localStorage.removeItem("USERRESUMEN_VENTASPENDIENTES");
     window.localStorage.removeItem("USERRESUMEN_VENTASCOBRADAS");
     window.localStorage.removeItem("USERRESUMEN_COMPRASPENDIENTES");
@@ -96,6 +99,7 @@ function saveUserLogin() {
 }
 
 function saveUserProfile(parsed_data) {
+    //PROFILE
     window.localStorage.setItem("USERPROFILE_NOMBRECOMPLETO", parsed_data["USERPROFILE_NOMBRECOMPLETO"]);
     window.localStorage.setItem("USERPROFILE_NOMBREFANTASIA", parsed_data["USERPROFILE_NOMBREFANTASIA"]);
     window.localStorage.setItem("USERPROFILE_IDENTIFICADOR", parsed_data["USERPROFILE_IDENTIFICADOR"]);
@@ -111,6 +115,7 @@ function saveUserProfile(parsed_data) {
 }
 
 function saveUserResumen(parsed_data) {
+    //RESUMEN
     window.localStorage.setItem("USERRESUMEN_VENTASPENDIENTES", parsed_data["USERRESUMEN_VENTASPENDIENTES"]);
     window.localStorage.setItem("USERRESUMEN_VENTASCOBRADAS", parsed_data["USERRESUMEN_VENTASCOBRADAS"]);
     window.localStorage.setItem("USERRESUMEN_COMPRASPENDIENTES", parsed_data["USERRESUMEN_COMPRASPENDIENTES"]);
@@ -157,4 +162,8 @@ function loadUserResumen() {
     } else {
         $("#resumen_notSyncronizedMessage").css("display", "block");
     }
+}
+
+function refreshPage() {
+    location.reload();
 }
