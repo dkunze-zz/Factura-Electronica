@@ -171,3 +171,10 @@ function refreshPage(page) {
         //location.href = 'index.html#!/'+page; // does not work.
     }
 }
+
+function closeApp(){
+    if (confirm("¿Seguro que desea cerrar la aplicacion?")) {
+        navigator.app.exitApp();
+    }
+    
+}

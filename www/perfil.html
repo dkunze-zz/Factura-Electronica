@@ -64,6 +64,16 @@
                                     <div class="table_section_14" style="width: 100%;">Si los cambios no se reflejan <a href="#" class="buy_now" onclick="refreshPage();">haga click aqu&iacute;</a></div> 
                                 </li>
                             </ul>
+                            <ul>
+                                <li class="table_row">
+                                    <div class="table_section_14" style="width: 100%;">
+                                        <a href="#" onclick="vibrate();" data-popup=".popup-logout" class="open-popup">
+                                            <img src="images/icons/white/logout.png" alt="" title="" width="50" /><br/>
+                                            <span>Desconectar</span>
+                                        </a>
+                                    </div> 
+                                </li>
+                            </ul>
 
                             <div id="perfil_notSyncronizedMessage" style="display: block;">
                                 Debe sincronizar esta secci&oacute;n para cargar la informaci&oacute;n.
@@ -73,6 +83,16 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
+
+        <!-- Social Popup -->
+        <div class="popup popup-logout contactform">
+            <div class="content-block">
+                <h4>Desconectarme</h4>
+                <p>¿Seguro que desea desconectarse de la aplicaci&oacute;n? Se borrar&aacute;n todos los datos (solamente) del telefono. ¿Desea continuar?</p>
+                <input class="form_submit" id="loginform_submit_btn" value="SI" onclick="vibrate();logout()" readonly="readonly"/>
+                <input class="form_submit close-popup" id="loginform_submit_btn" value="NO" onclick="" readonly="readonly"/>
             </div>
         </div>
 
@@ -89,12 +109,12 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
-                                        app.initialize();
-                                        
-                                        $(window).load(function () {
-                                            loadUserProfile(); // load RESUMEN section
-                                            $(".se-pre-con").fadeOut();// Animate loader off screen
-                                        });
+                    app.initialize();
+
+                    $(window).load(function () {
+                        loadUserProfile(); // load RESUMEN section
+                        $(".se-pre-con").fadeOut();// Animate loader off screen
+                    });
         </script>
     </body>
 </html>
