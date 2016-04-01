@@ -164,12 +164,14 @@ function loadUserResumen() {
 }
 
 function refreshPage(page) {
+    location.reload();
+    /*
     if (page === null) {
         location.reload();
     } else {        
         //location.reload();
         //location.href = 'index.html#!/'+page; // does not work.
-    }
+    }*/
 }
 
 function closeApp(){
