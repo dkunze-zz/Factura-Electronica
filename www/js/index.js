@@ -127,18 +127,18 @@ function saveUserResumen(parsed_data) {
 
 function loadUserProfile() {
     if (window.localStorage.getItem("USERLOGIN_GRANTED") == "YES") {
-        $("#perfil_nombreCompleto").text(window.localStorage.getItem("USERPROFILE_NOMBRECOMPLETO"));
-        $("#perfil_nombreFantasia").text(window.localStorage.getItem("USERPROFILE_NOMBREFANTASIA"));
-        $("#perfil_identificador").text(window.localStorage.getItem("USERPROFILE_IDENTIFICADOR"));
-        $("#perfil_tipoIdentificador").text(window.localStorage.getItem("USERPROFILE_TIPOIDENTIFICADOR"));
-        $("#perfil_ingresosBrutos").text(window.localStorage.getItem("USERPROFILE_INGRESOSBRUTOS"));
-        $("#perfil_puntoDeVenta").text(window.localStorage.getItem("USERPROFILE_PUNTODEVENTA"));
-        $("#perfil_domicilioComercial").text(window.localStorage.getItem("USERPROFILE_DOMICILIOCOMERCIAL"));
-        $("#perfil_telefono").text(window.localStorage.getItem("USERPROFILE_TELEFONO"));
-        $("#perfil_inicioActividades").text(window.localStorage.getItem("USERPROFILE_INICIOACTIVIDADES"));
-        $("#perfil_condicionFrenteIVA").text(window.localStorage.getItem("USERPROFILE_CONDICIONFRENTEALIVA"));
-        $("#perfil_leyendaFactura").text(window.localStorage.getItem("USERPROFILE_LEYENDAFACTURA"));
-        $("#perfil_email").text(window.localStorage.getItem("USERPROFILE_EMAIL"));
+        if ( window.localStorage.getItem("USERPROFILE_NOMBRECOMPLETO") != "" ) $("#perfil_nombreCompleto").text(window.localStorage.getItem("USERPROFILE_NOMBRECOMPLETO"));
+        if ( window.localStorage.getItem("USERPROFILE_NOMBREFANTASIA") != "" ) $("#perfil_nombreFantasia").text(window.localStorage.getItem("USERPROFILE_NOMBREFANTASIA"));
+        if ( window.localStorage.getItem("USERPROFILE_IDENTIFICADOR") != "") $("#perfil_identificador").text(window.localStorage.getItem("USERPROFILE_IDENTIFICADOR"));
+        if ( window.localStorage.getItem("USERPROFILE_TIPOIDENTIFICADOR") != "") $("#perfil_tipoIdentificador").text(window.localStorage.getItem("USERPROFILE_TIPOIDENTIFICADOR"));
+        if ( window.localStorage.getItem("USERPROFILE_INGRESOSBRUTOS") != "") $("#perfil_ingresosBrutos").text(window.localStorage.getItem("USERPROFILE_INGRESOSBRUTOS"));
+        if ( window.localStorage.getItem("USERPROFILE_PUNTODEVENTA") != "") $("#perfil_puntoDeVenta").text(window.localStorage.getItem("USERPROFILE_PUNTODEVENTA"));
+        if ( window.localStorage.getItem("USERPROFILE_DOMICILIOCOMERCIAL") != "") $("#perfil_domicilioComercial").text(window.localStorage.getItem("USERPROFILE_DOMICILIOCOMERCIAL"));
+        if ( window.localStorage.getItem("USERPROFILE_TELEFONO") != "") $("#perfil_telefono").text(window.localStorage.getItem("USERPROFILE_TELEFONO"));
+        if ( window.localStorage.getItem("USERPROFILE_INICIOACTIVIDADES") != "") $("#perfil_inicioActividades").text(window.localStorage.getItem("USERPROFILE_INICIOACTIVIDADES"));
+        if ( window.localStorage.getItem("USERPROFILE_CONDICIONFRENTEALIVA") != "") $("#perfil_condicionFrenteIVA").text(window.localStorage.getItem("USERPROFILE_CONDICIONFRENTEALIVA"));
+        if ( window.localStorage.getItem("USERPROFILE_LEYENDAFACTURA") != "") $("#perfil_leyendaFactura").text(window.localStorage.getItem("USERPROFILE_LEYENDAFACTURA"));
+        if ( window.localStorage.getItem("USERPROFILE_EMAIL") != "") $("#perfil_email").text(window.localStorage.getItem("USERPROFILE_EMAIL"));
 
         $("#perfil_notSyncronizedMessage").css("display", "none");
     } else {
