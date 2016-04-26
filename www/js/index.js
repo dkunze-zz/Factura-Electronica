@@ -127,18 +127,30 @@ function saveUserResumen(parsed_data) {
 
 function loadUserProfile() {
     if (window.localStorage.getItem("USERLOGIN_GRANTED") == "YES") {
-        if ( window.localStorage.getItem("USERPROFILE_NOMBRECOMPLETO") != "" ) $("#perfil_nombreCompleto").text(window.localStorage.getItem("USERPROFILE_NOMBRECOMPLETO"));
-        if ( window.localStorage.getItem("USERPROFILE_NOMBREFANTASIA") != "" ) $("#perfil_nombreFantasia").text(window.localStorage.getItem("USERPROFILE_NOMBREFANTASIA"));
-        if ( window.localStorage.getItem("USERPROFILE_IDENTIFICADOR") != "") $("#perfil_identificador").text(window.localStorage.getItem("USERPROFILE_IDENTIFICADOR"));
-        if ( window.localStorage.getItem("USERPROFILE_TIPOIDENTIFICADOR") != "") $("#perfil_tipoIdentificador").text(window.localStorage.getItem("USERPROFILE_TIPOIDENTIFICADOR"));
-        if ( window.localStorage.getItem("USERPROFILE_INGRESOSBRUTOS") != "") $("#perfil_ingresosBrutos").text(window.localStorage.getItem("USERPROFILE_INGRESOSBRUTOS"));
-        if ( window.localStorage.getItem("USERPROFILE_PUNTODEVENTA") != "") $("#perfil_puntoDeVenta").text(window.localStorage.getItem("USERPROFILE_PUNTODEVENTA"));
-        if ( window.localStorage.getItem("USERPROFILE_DOMICILIOCOMERCIAL") != "") $("#perfil_domicilioComercial").text(window.localStorage.getItem("USERPROFILE_DOMICILIOCOMERCIAL"));
-        if ( window.localStorage.getItem("USERPROFILE_TELEFONO") != "") $("#perfil_telefono").text(window.localStorage.getItem("USERPROFILE_TELEFONO"));
-        if ( window.localStorage.getItem("USERPROFILE_INICIOACTIVIDADES") != "") $("#perfil_inicioActividades").text(window.localStorage.getItem("USERPROFILE_INICIOACTIVIDADES"));
-        if ( window.localStorage.getItem("USERPROFILE_CONDICIONFRENTEALIVA") != "") $("#perfil_condicionFrenteIVA").text(window.localStorage.getItem("USERPROFILE_CONDICIONFRENTEALIVA"));
-        if ( window.localStorage.getItem("USERPROFILE_LEYENDAFACTURA") != "") $("#perfil_leyendaFactura").text(window.localStorage.getItem("USERPROFILE_LEYENDAFACTURA"));
-        if ( window.localStorage.getItem("USERPROFILE_EMAIL") != "") $("#perfil_email").text(window.localStorage.getItem("USERPROFILE_EMAIL"));
+        if (window.localStorage.getItem("USERPROFILE_NOMBRECOMPLETO") != "")
+            $("#perfil_nombreCompleto").text(window.localStorage.getItem("USERPROFILE_NOMBRECOMPLETO"));
+        if (window.localStorage.getItem("USERPROFILE_NOMBREFANTASIA") != "")
+            $("#perfil_nombreFantasia").text(window.localStorage.getItem("USERPROFILE_NOMBREFANTASIA"));
+        if (window.localStorage.getItem("USERPROFILE_IDENTIFICADOR") != "")
+            $("#perfil_identificador").text(window.localStorage.getItem("USERPROFILE_IDENTIFICADOR"));
+        if (window.localStorage.getItem("USERPROFILE_TIPOIDENTIFICADOR") != "")
+            $("#perfil_tipoIdentificador").text(window.localStorage.getItem("USERPROFILE_TIPOIDENTIFICADOR"));
+        if (window.localStorage.getItem("USERPROFILE_INGRESOSBRUTOS") != "")
+            $("#perfil_ingresosBrutos").text(window.localStorage.getItem("USERPROFILE_INGRESOSBRUTOS"));
+        if (window.localStorage.getItem("USERPROFILE_PUNTODEVENTA") != "")
+            $("#perfil_puntoDeVenta").text(window.localStorage.getItem("USERPROFILE_PUNTODEVENTA"));
+        if (window.localStorage.getItem("USERPROFILE_DOMICILIOCOMERCIAL") != "")
+            $("#perfil_domicilioComercial").text(window.localStorage.getItem("USERPROFILE_DOMICILIOCOMERCIAL"));
+        if (window.localStorage.getItem("USERPROFILE_TELEFONO") != "")
+            $("#perfil_telefono").text(window.localStorage.getItem("USERPROFILE_TELEFONO"));
+        if (window.localStorage.getItem("USERPROFILE_INICIOACTIVIDADES") != "")
+            $("#perfil_inicioActividades").text(window.localStorage.getItem("USERPROFILE_INICIOACTIVIDADES"));
+        if (window.localStorage.getItem("USERPROFILE_CONDICIONFRENTEALIVA") != "")
+            $("#perfil_condicionFrenteIVA").text(window.localStorage.getItem("USERPROFILE_CONDICIONFRENTEALIVA"));
+        if (window.localStorage.getItem("USERPROFILE_LEYENDAFACTURA") != "")
+            $("#perfil_leyendaFactura").text(window.localStorage.getItem("USERPROFILE_LEYENDAFACTURA"));
+        if (window.localStorage.getItem("USERPROFILE_EMAIL") != "")
+            $("#perfil_email").text(window.localStorage.getItem("USERPROFILE_EMAIL"));
 
         $("#perfil_notSyncronizedMessage").css("display", "none");
     } else {
@@ -148,14 +160,22 @@ function loadUserProfile() {
 
 function loadUserResumen() {
     if (window.localStorage.getItem("USERLOGIN_GRANTED") == "YES") {
-        $("#resumen_ventasPendientes").text(window.localStorage.getItem("USERRESUMEN_VENTASPENDIENTES"));
-        $("#resumen_ventasCobradas").text(window.localStorage.getItem("USERRESUMEN_VENTASCOBRADAS"));
-        $("#resumen_comprasPendientes").text(window.localStorage.getItem("USERRESUMEN_COMPRASPENDIENTES"));
-        $("#resumen_comprasPagadas").text(window.localStorage.getItem("USERRESUMEN_COMPRASPAGADAS"));
-        $("#resumen_presupuestosPendientes").text(window.localStorage.getItem("USERRESUMEN_PRESUPUESTOSPENDIENTES"));
-        $("#resumen_presupuestosAprobados").text(window.localStorage.getItem("USERRESUMEN_PRESUPUESTOSAPROBADOS"));
-        $("#resumen_generalPendientes").text(window.localStorage.getItem("USERRESUMEN_GENERALPENDIENTES"));
-        $("#resumen_generalCobradas").text(window.localStorage.getItem("USERRESUMEN_GENERALCOBRADAS"));
+        if (window.localStorage.getItem("USERRESUMEN_VENTASPENDIENTES") != "")
+            $("#resumen_ventasPendientes").text(window.localStorage.getItem("USERRESUMEN_VENTASPENDIENTES"));
+        if (window.localStorage.getItem("USERRESUMEN_VENTASCOBRADAS") != "")
+            $("#resumen_ventasCobradas").text(window.localStorage.getItem("USERRESUMEN_VENTASCOBRADAS"));
+        if (window.localStorage.getItem("USERRESUMEN_COMPRASPENDIENTES") != "")
+            $("#resumen_comprasPendientes").text(window.localStorage.getItem("USERRESUMEN_COMPRASPENDIENTES"));
+        if (window.localStorage.getItem("USERRESUMEN_COMPRASPAGADAS") != "")
+            $("#resumen_comprasPagadas").text(window.localStorage.getItem("USERRESUMEN_COMPRASPAGADAS"));
+        if (window.localStorage.getItem("USERRESUMEN_PRESUPUESTOSPENDIENTES") != "")
+            $("#resumen_presupuestosPendientes").text(window.localStorage.getItem("USERRESUMEN_PRESUPUESTOSPENDIENTES"));
+        if (window.localStorage.getItem("USERRESUMEN_PRESUPUESTOSAPROBADOS") != "")
+            $("#resumen_presupuestosAprobados").text(window.localStorage.getItem("USERRESUMEN_PRESUPUESTOSAPROBADOS"));
+        if (window.localStorage.getItem("USERRESUMEN_GENERALPENDIENTES") != "")
+            $("#resumen_generalPendientes").text(window.localStorage.getItem("USERRESUMEN_GENERALPENDIENTES"));
+        if (window.localStorage.getItem("USERRESUMEN_GENERALCOBRADAS") != "")
+            $("#resumen_generalCobradas").text(window.localStorage.getItem("USERRESUMEN_GENERALCOBRADAS"));
 
         $("#resumen_notSyncronizedMessage").css("display", "none");
     } else {
@@ -163,20 +183,39 @@ function loadUserResumen() {
     }
 }
 
+function loadUserCustomers() {
+    if (window.localStorage.getItem("USERLOGIN_GRANTED") == "YES") {
+        
+        $("#clientes_notSyncronizedMessage").css("display", "none");
+    } else {
+        $("#clientes_notSyncronizedMessage").css("display", "block");
+    }
+}
+
 function refreshPage(page) {
     location.reload();
     /*
-    if (page === null) {
-        location.reload();
-    } else {        
-        //location.reload();
-        //location.href = 'index.html#!/'+page; // does not work.
-    }*/
+     if (page === null) {
+     location.reload();
+     } else {        
+     //location.reload();
+     //location.href = 'index.html#!/'+page; // does not work.
+     }*/
 }
 
-function closeApp(){
+function closeApp() {
     if (confirm("¿Seguro que desea cerrar la aplicacion?")) {
         navigator.app.exitApp();
     }
-    
+}
+
+function loadCustomerPage() {
+    var clientes_dataContainerTable = $("#clientes_dataContainerTable");
+    /*   
+     <li class="table_row">
+     <div class="table_section_14">Cliente</div>
+     <div class="table_section_14">CUIT/CUIL/DNI</div>
+     <div class="table_section_14">E-mail</div>
+     </li>
+     */
 }
