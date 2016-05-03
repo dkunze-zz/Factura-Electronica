@@ -26,9 +26,6 @@
                 background: url(images/loader.gif) center no-repeat #fff;
             }
         </style>
-        <script>
-            $(".se-pre-con").fadeIn();
-        </script>
     </head>    
     <body id="mobile_wrap">
         <div class="pages">
@@ -41,16 +38,16 @@
                     </div>
                     <div id="pages_maincontent">
 
-                        <h2 class="page_title">Ventas</h2> 
+                        <h2 class="page_title">Ventas Temporales</h2> 
 
                         <div class="page_content"> 
                             <blockquote>
-                                Gestione sus Ventas <strong style="font-size: 10px;">(&Uacute;ltimas 10 ventas visibles)</strong>
+                                Facturas temporales que aun no han sido sincronizadas
                             </blockquote>
-                            
+
                             <blockquote>
+                                <button class="btn" onclick="backToInvoices();" type="button">Volver a Ventas</button>
                                 <button class="btn" onclick="redirectToNewInvoice();" type="button">Crear Nueva Venta</button>
-                                <button class="btn" onclick="viewTempInvoices();" type="button">Ver Facturas Temporales</button>
                             </blockquote>                            
 
                             <table>
@@ -65,7 +62,7 @@
                                         <th class="customer_name" style="width:350px; padding: 10px;">
                                             Cliente
                                         </th>
-                                        <th class="issue_date" style="width:350px; padding: 10px;">
+                                        <th class="issue_date" style="width:100px; padding: 10px;">
                                             Fecha
                                         </th>                                        
                                         <th class="gross_amount" style="width:100px; padding: 10px;">
@@ -78,7 +75,16 @@
 
                                 </tbody>
                             </table>
+                            
+                            <blockquote>
+                                <button id="btnSyncToSystem" class="btn" onclick="syncToSystem('invoices');" type="button">Sincronizar al Sistema</button>                                
+                            </blockquote>                            
 
+
+                            <div id="msgNoInvoices" style="display: block; margin-top: 50px;">
+                                No existen facturas temporales.
+                            </div>
+                            
 
                             <div id="ventas_notSyncronizedMessage" style="display: block; margin-top: 50px;">
                                 Debe sincronizar esta secci&oacute;n para cargar la informaci&oacute;n.
@@ -104,25 +110,49 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script>
+                                    $(".se-pre-con").fadeIn();
+        </script>
+
         <script type="text/javascript">
             app.initialize();
 
             $(window).load(function () {
-                loadUserInvoices(); // load VENTAS section
+                loadUserInvoicesTemp(); // load VENTAS section
                 $(".se-pre-con").fadeOut();// Animate loader off screen
             });
-            
-            function invoicesExpand(elementid){
-                
-                $("#details_"+elementid).toggle();
+
+            function invoicesExpand(elementid) {
+                $("#details_" + elementid).toggle();
             }
-            function redirectToNewInvoice(){
+            function redirectToNewInvoice() {
                 location.href = 'ventas-crear-venta.html';
             }
-            function viewTempInvoices(){
-                location.href = 'ventas-temp.html';
+            function backToInvoices() {
+                location.href = 'ventas.html';
+            }
+            function tempInvoiceDelete(tempInvoiceId) {
+                if (confirm("Seguro que desea eliminar la factura temporal?")) {
+                    var getID = tempInvoiceId.split("-");
+                    getID = getID[1];
+
+                    // dont change the COUNTER because it will change all INDEX invoices
+                    // window.localStorage.removeItem("TEMP_INVOICES_COUNTER");
+                    for (var i = 0; i < parseInt(window.localStorage.getItem("TEMP_INVOICES_ITEMS_COUNTER_" + getID), 10); i++) {
+                        window.localStorage.removeItem("TEMP_INVOICES_ITEM_REFERENCE_" + getID + "_" + i);
+                        window.localStorage.removeItem("TEMP_INVOICES_ITEM_QTY_" + getID + "_" + i);
+                        window.localStorage.removeItem("TEMP_INVOICES_ITEM_GROSSAMOUNT_" + getID + "_" + i);
+                    }
+                    window.localStorage.removeItem("TEMP_INVOICES_CUSTOMER_" + getID);
+                    window.localStorage.removeItem("TEMP_INVOICES_INVOICETYPE_" + getID);
+                    window.localStorage.removeItem("TEMP_INVOICES_ISSUEDATEDB_" + getID);
+                    window.localStorage.removeItem("TEMP_INVOICES_ISSUEDATESHOW_" + getID);
+                    window.localStorage.removeItem("TEMP_INVOICES_ITEMS_COUNTER_" + getID);
+                    window.localStorage.removeItem("TEMP_INVOICES_GROSSAMOUNT_" + getID);
+                    location.href = 'ventas-temp.html';
+                }
             }
         </script>
-        
+
     </body>
 </html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+        <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="apple-touch-startup-image-640x1096.html">
+        <title>Tu Factura Electronica | Prysma Software</title>
+        <link rel="stylesheet" href="css/framework7.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/colors/magenta.css">
+        <link type="text/css" rel="stylesheet" href="css/swipebox.css" />
+        <link type="text/css" rel="stylesheet" href="css/animations.css" />        
+        <style>
+            .no-js #loader { display: none;  }
+            .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+            .se-pre-con {
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                z-index: 99999;
+                background: url(images/loader.gif) center no-repeat #fff;
+            }
+        </style>
+        <link rel="stylesheet" href="css/jquery-ui.css"/>
+
+    </head>    
+    <body id="mobile_wrap">
+        <div class="pages">
+            <div data-page="projects" class="page no-toolbar no-navbar">
+                <div class="page-content">
+
+                    <div class="navbarpages">
+                        <div class="nav_left_logo"><a href="index.html"><img src="images/newfelogo.png" alt="" title="" /></a></div>
+                        <div class="nav_right_button"><a href="index.html" class="external"><img src="images/icons/white/menu.png" alt="" title="" /></a></div>
+                    </div>
+                    <div id="pages_maincontent">
+
+                        <h2 class="page_title">Ventas</h2> 
+
+                        <div class="page_content"> 
+                            <blockquote>
+                                Crear una nueva Venta
+                            </blockquote>
+
+
+
+                            <div style="position: relative; width: 100%; margin-bottom: 15px;">
+                                <div style="display: inline-block; width: 100px;">
+                                    <label>Cliente</label>
+                                </div>
+                                <div style="display: inline-block;">
+                                    <input type="text" id="customers" list='datalistcustomers' name="customers" placeholder="Cliente" class="form_input" />
+                                </div>
+                            </div>
+
+                            <div style="position: relative; width: 100%; margin-bottom: 15px;">
+                                <div style="display: inline-block; width: 100px;">
+                                    <label>Serie</label>
+                                </div>
+                                <div style="display: inline-block;">
+                                    <select name="invoiceType" id="invoiceType" class="form_select">
+                                        <option value="1">Factura A</option>
+                                        <option value="6">Factura B</option>
+                                        <option value="19">Factura E</option>
+                                        <option value="2">Nota de Debito A</option>
+                                        <option value="7">Nota de Debito B</option>
+                                        <option value="20">Nota de Debito E</option>
+                                        <option value="3">Nota de Credito A</option>
+                                        <option value="8">Nota de Credito B</option>
+                                        <option value="21">Nota de Credito E</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+                            <div style="position: relative; width: 100%; margin-bottom: 15px;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th style="width:50px;"></th>
+                                            <th>Referencia | Descripcion | Costo</th>
+                                            <th>Cantidad</th>
+                                            <th>IVA</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id='item_tbody'>
+                                    </tbody>
+
+                                    <tfoot>
+                                        <tr>
+                                            <td>                                                
+                                            </td>
+                                            <td>
+                                                <a href='#' onclick="addNewItem();">Agregar Item</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                &nbsp;
+                                            </td>
+                                            <td>                                                
+                                            </td>                                            
+                                        </tr>
+                                        <tr>                                                
+                                            <td>                                                
+                                            </td>
+                                            <td style="text-align: right;">Subtotal</td>
+                                            <td style="text-align: right;" id="subtotal">
+                                                $0,00
+                                            </td>
+                                        </tr>                                            
+                                        <tr>
+                                            <td>                                                
+                                            </td>
+                                            <td style="text-align: right;">Impuestos</td>
+                                            <td style="text-align: right;" id="impuestos">
+                                                $0,00
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>                                                
+                                            </td>
+                                            <td style="text-align: right;">Total</td>
+                                            <td style="text-align: right;" id="total">
+                                                $0,00    
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+                            </div>
+
+                            <datalist id="datalistcustomers"></datalist>
+                            <datalist id="productslist"></datalist>
+
+                            <button class="btn" onclick="return saveInvoice();" type="button">Guardar Factura</button>                                
+                            <br/><br/>
+                            <button class="btn" onclick="return backHistoryPage();" type="button">Volver</button>                                
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <script async src="js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+        <script>
+                                $(".se-pre-con").fadeIn();
+        </script>
+        <script>
+            $(function () {
+                var totalCustomers = parseInt(window.localStorage.getItem("USERCUSTOMER_TOTALROWS"), 10);
+                if (totalCustomers > 0) {
+                    var datalistcustomers = $("#datalistcustomers");
+                    for (var i = 0; i < totalCustomers; i++) {
+                        var customername = "<option value='" + window.localStorage.getItem("USERCUSTOMER_RAZONSOCIAL_" + i).toUpperCase() + "'>" + window.localStorage.getItem("USERCUSTOMER_RAZONSOCIAL_" + i).toUpperCase() + "</option>";
+                        datalistcustomers.append(customername);
+                    }
+                }
+
+                var totalProducts = parseInt(window.localStorage.getItem("USERPRODUCTS_TOTALROWS"), 10);
+                if (totalProducts > 0) {
+                    var productsreferences = $("#productslist");
+                    for (var i = 0; i < totalProducts; i++) {
+                        var optionProductRefereces = "<option value='" + window.localStorage.getItem("USERPRODUCTS_REFERENCE_" + i).toUpperCase() + " | " + window.localStorage.getItem("USERPRODUCTS_DESCRIPTION_" + i).toUpperCase() + " | $" + window.localStorage.getItem("USERPRODUCTS_PRICE_" + i).toUpperCase() + "'>" + window.localStorage.getItem("USERPRODUCTS_REFERENCE_" + i).toUpperCase() + " | " + window.localStorage.getItem("USERPRODUCTS_DESCRIPTION_" + i).toUpperCase() + " | $" + window.localStorage.getItem("USERPRODUCTS_PRICE_" + i).toUpperCase() + "</option>";
+                        productsreferences.append(optionProductRefereces);
+                    }
+                }
+            });
+
+            addNewItem();
+
+            function addNewItem() {
+                var totalChilds = ($("#item_tbody").children().length);
+                var newTableItem = "<tr id='item_firstTR_" + totalChilds + "'>";
+                newTableItem += "   <td>";
+                newTableItem += "   <button class=\"btn\" id='" + totalChilds + "' onclick=\"removeTempInvoice(this.id)\" type=\"button\">X</button>";
+                newTableItem += "            </td>";
+                newTableItem += "<td>";
+                newTableItem += "                <input name='item_reference_" + totalChilds + "' list='productslist' id='item_reference_" + totalChilds + "' type='text' style='width:370px;'/>";
+                newTableItem += "            </td>";
+                /*                
+                 newTableItem += "            <td>";
+                 newTableItem += "                <input name='item_description_" + totalChilds + "' id='item_description_" + totalChilds + "' type='text' style='width:200px;'/>";
+                 newTableItem += "            </td>";
+                 newTableItem += "            <td>";
+                 newTableItem += "                <input name='item_unitcost_" + totalChilds + "' id='item_unitcost_" + totalChilds + "' type='text' style='width:100px;'/>";
+                 newTableItem += "            </td>";
+                 */
+                newTableItem += "            <td>";
+                newTableItem += "                <input value='0' onkeyup='calculateTotal()' name='item_qty_" + totalChilds + "' id='item_qty_" + totalChilds + "' type='number' style='width:100px;'/>";
+                newTableItem += "            </td>";
+
+                newTableItem += "            <td>";
+                newTableItem += "                <select onchange='calculateTotal()' id='item_iva_" + totalChilds + "' name='item_iva_" + totalChilds + "' style='width:100px;'>";
+                newTableItem += "                    <option value='9'>";
+                newTableItem += "                        IVA 27%  ";
+                newTableItem += "                    </option>";
+                newTableItem += "                    <option value='10' selected='selected'>";
+                newTableItem += "                        IVA 21%  ";
+                newTableItem += "                    </option>";
+                newTableItem += "                    <option value='11'>";
+                newTableItem += "                        IVA 10,5%  ";
+                newTableItem += "                    </option>";
+                newTableItem += "                    <option value='12'>";
+                newTableItem += "                        IVA 5%  ";
+                newTableItem += "                    </option>";
+                newTableItem += "                    <option value='13'>";
+                newTableItem += "                        IVA 2,5%  ";
+                newTableItem += "                    </option>";
+                newTableItem += "                    <option value='14'>";
+                newTableItem += "                        IVA 0%  ";
+                newTableItem += "                    </option>";
+                newTableItem += "                </select>";
+                newTableItem += "            </td>";
+
+                newTableItem += "        </tr>";
+                $("#item_tbody").append(newTableItem);
+            }
+
+        </script>
+
+        <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="js/framework7.js"></script>
+        <script type="text/javascript" src="js/my-app.js"></script>
+        <script type="text/javascript" src="js/jquery.swipebox.js"></script>
+        <script type="text/javascript" src="js/email.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+            $(window).load(function () {
+                $(".se-pre-con").fadeOut(); // Animate loader off screen
+            });
+
+            function saveInvoice() {
+                if (confirm("Seguro que desea guardar la factura de manera temporal?")) {
+                    var getPrevItems = parseInt(window.localStorage.getItem("TEMP_INVOICES_COUNTER"), 10);
+                    var currentInvoiceID = getPrevItems;
+
+                    var customer = $("#customers").val();
+                    if (customer == "") {
+                        alert("Debe seleccionar el cliente");
+                        return;
+                    }
+                    var invoiceType = $("#invoiceType").val();
+
+                    var d = new Date();
+
+                    var month = d.getMonth() + 1;
+                    var day = d.getDate();
+
+                    var issuedatedb = d.getFullYear() + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
+                    var issuedateshow = (day < 10 ? '0' : '') + day + '/' + (month < 10 ? '0' : '') + month + '/' + d.getFullYear();                    
+
+                    var totalChilds = $("#item_tbody").children().length;
+                    var total_iva = 0;
+                    var invoicegross_amount = 0;
+
+                    for (var i = 0; i < totalChilds; i++) {
+                        var item_reference = $("#item_reference_" + i).val();
+                        var item_qty = $("#item_qty_" + i).val();
+                        if (item_qty == "" || item_qty == "0") {
+                            alert("Debe seleccionar la cantidad");
+                            return;
+                        }
+                        var item_iva = $("#item_iva_" + i).val();
+                        var item_iva_percentage = 0;
+                        switch (item_iva) {
+                            case "9"://27
+                                item_iva_percentage = 27;
+                                break;
+                            case "10"://21
+                                item_iva_percentage = 21;
+                                break;
+                            case "11"://10.5
+                                item_iva_percentage = 10.5;
+                                break;
+                            case "12"://5
+                                item_iva_percentage = 5;
+                                break;
+                            case "13"://2.5
+                                item_iva_percentage = 2.5;
+                                break;
+                            case "14"://0
+                                item_iva_percentage = 0;
+                                break;
+                            default:
+                                break;
+                        }
+
+                        var gross_amount = 0;
+                        var extractItem = item_reference.split(" | ");
+                        var item_cod_reference = extractItem[0];
+                        var item_description = extractItem[1];
+                        var item_unitcost = extractItem[2].split("$");
+                        item_unitcost = item_unitcost[1];
+                        gross_amount = (item_unitcost * item_qty);
+                        if (item_iva_percentage != 0) {
+                            total_iva = ((item_unitcost * item_iva_percentage) / 100);
+                        } else {
+                            total_iva = 0;
+                        }
+                        gross_amount = gross_amount + total_iva;
+                        invoicegross_amount = invoicegross_amount + gross_amount;
+
+                        window.localStorage.setItem("TEMP_INVOICES_ITEM_REFERENCE_" + currentInvoiceID + "_" + i, item_reference);
+                        window.localStorage.setItem("TEMP_INVOICES_ITEM_COD_REFERENCE_" + currentInvoiceID + "_" + i, item_cod_reference);
+                        window.localStorage.setItem("TEMP_INVOICES_ITEM_DESCRIPTION_" + currentInvoiceID + "_" + i, item_description);
+                        window.localStorage.setItem("TEMP_INVOICES_ITEM_QTY_" + currentInvoiceID + "_" + i, item_qty);
+                        window.localStorage.setItem("TEMP_INVOICES_ITEM_GROSSAMOUNT_" + currentInvoiceID + "_" + i, gross_amount);
+                    }
+                    window.localStorage.setItem("TEMP_INVOICES_COUNTER", currentInvoiceID + 1);
+                    window.localStorage.setItem("TEMP_INVOICES_CUSTOMER_" + currentInvoiceID, customer);
+                    window.localStorage.setItem("TEMP_INVOICES_INVOICETYPE_" + currentInvoiceID, invoiceType);
+                    window.localStorage.setItem("TEMP_INVOICES_ISSUEDATEDB_" + currentInvoiceID, issuedatedb);
+                    window.localStorage.setItem("TEMP_INVOICES_ISSUEDATESHOW_" + currentInvoiceID, issuedateshow);
+                    window.localStorage.setItem("TEMP_INVOICES_ITEMS_COUNTER_" + currentInvoiceID, totalChilds);
+                    calculateGrossAmountInvoice(currentInvoiceID);
+
+                    alert("La factura ha sido guardada de forma temporal. Recuerde que debe sincronizar.");
+                    location.href = 'ventas-temp.html';
+                }
+            }
+
+            function removeTempInvoice(id) {
+                if (confirm("Seguro que desea eliminar el item seleccionado?")) {
+                    for (var x = 0; x < window.localStorage.getItem("TEMP_INVOICES_ITEMS_COUNTER_" + id); x++) {
+                        window.localStorage.removeItem("TEMP_INVOICES_ITEM_REFERENCE_" + id + "_" + x);
+                        window.localStorage.removeItem("TEMP_INVOICES_ITEM_QTY_" + id + "_" + x);
+                        window.localStorage.removeItem("TEMP_INVOICES_ITEM_GROSSAMOUNT_" + id + "_" + x);
+                    }
+                    $("#item_firstTR_" + id).hide();
+                    calculateGrossAmountInvoice(id);
+                }
+            }
+
+            function calculateGrossAmountInvoice(id) {
+                var totalChilds = $("#item_tbody").children().length;
+                var total_iva = 0;
+                var invoicegross_amount = 0;
+
+                for (var i = 0; i < totalChilds; i++) {
+                    try {
+                        var item_reference = $("#item_reference_" + i).val();
+                        var item_qty = $("#item_qty_" + i).val();
+                        var item_iva = $("#item_iva_" + i).val();
+                        var item_iva_percentage = 0;
+                        switch (item_iva) {
+                            case "9":
+                                item_iva_percentage = 27;
+                                break;
+                            case "10":
+                                item_iva_percentage = 21;
+                                break;
+                            case "11":
+                                item_iva_percentage = 10.5;
+                                break;
+                            case "12":
+                                item_iva_percentage = 5;
+                                break;
+                            case "13":
+                                item_iva_percentage = 2.5;
+                                break;
+                            case "14":
+                                item_iva_percentage = 0;
+                                break;
+                            default:
+                                break;
+                        }
+
+                        var gross_amount = 0;
+                        var extractItem = item_reference.split(" | ");
+                        var item_unitcost = extractItem[2].split("$");
+                        item_unitcost = item_unitcost[1];
+                        gross_amount = (item_unitcost * item_qty);
+                        if (item_iva_percentage != 0) {
+                            total_iva = ((gross_amount * item_iva_percentage) / 100);
+                        } else {
+                            total_iva = 0;
+                        }
+                        gross_amount = gross_amount + total_iva;
+                        invoicegross_amount = invoicegross_amount + gross_amount;
+                    } catch (ex) {
+                    }
+                }
+                window.localStorage.setItem("TEMP_INVOICES_GROSSAMOUNT_" + id, invoicegross_amount);
+            }
+
+
+            function calculateTotal() {
+                var subtotal_value = 0;
+                var impuestos_value = 0;
+                var total_value = 0;
+
+                var totalChilds = $("#item_tbody").children().length;
+                for (var i = 0; i < totalChilds; i++) {
+                    try {
+                        var item_reference = $("#item_reference_" + i).val();
+                        var item_qty = $("#item_qty_" + i).val();
+                        var item_iva = $("#item_iva_" + i).val();
+                        var item_iva_percentage = 0;
+                        var total_iva = 0;
+
+                        switch (item_iva) {
+                            case "9":
+                                item_iva_percentage = 27;
+                                break;
+                            case "10":
+                                item_iva_percentage = 21;
+                                break;
+                            case "11":
+                                item_iva_percentage = 10.5;
+                                break;
+                            case "12":
+                                item_iva_percentage = 5;
+                                break;
+                            case "13":
+                                item_iva_percentage = 2.5;
+                                break;
+                            case "14":
+                                item_iva_percentage = 0;
+                                break;
+                            default:
+                                break;
+                        }
+
+                        var gross_amount = 0;
+                        var extractItem = item_reference.split(" | ");
+                        var item_unitcost = extractItem[2].split("$");
+                        item_unitcost = item_unitcost[1];
+                        gross_amount = (item_unitcost * item_qty);
+
+                        subtotal_value = subtotal_value + gross_amount;
+
+                        if (item_iva_percentage != 0) {
+                            total_iva = ((gross_amount * item_iva_percentage) / 100);
+                        } else {
+                            total_iva = 0;
+                        }
+
+                        impuestos_value = impuestos_value + total_iva;
+
+                        gross_amount = gross_amount + total_iva;
+
+                        total_value = subtotal_value + impuestos_value;
+
+
+                    } catch (ex) {
+                    }
+                }
+
+
+                $("#subtotal").text("$" + numberFormat(subtotal_value, 2));
+                $("#impuestos").text("$" + numberFormat(impuestos_value, 2));
+                $("#total").text("$" + numberFormat(total_value, 2));
+
+            }
+        </script>
+
+
+    </body>
+</html>
