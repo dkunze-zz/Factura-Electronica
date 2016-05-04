@@ -41,21 +41,6 @@ var app = {
 
 
 
-        function onSuccess(heading) {
-            alert('Heading: ' + heading.magneticHeading);
-        }
-        ;
-
-        function onError(compassError) {
-            alert('Compass error: ' + compassError.code);
-        }
-        ;
-
-        var options = {
-            frequency: 3000
-        }; // Update every 3 seconds
-
-        navigator.compass.watchHeading(onSuccess, onError, options);
 
     },
     // Update DOM on a Received Event
