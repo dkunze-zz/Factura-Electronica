@@ -39,20 +39,23 @@ var app = {
         console.log(navigator.vibrate);
         navigator.vibrate(100);
 
-        
+
 
         function onSuccess(heading) {
             alert('Heading: ' + heading.magneticHeading);
         }
         ;
 
-        function onError(error) {
-            alert('CompassError: ' + error.code);
+        function onError(compassError) {
+            alert('Compass error: ' + compassError.code);
         }
         ;
 
-        navigator.compass.getCurrentHeading(onSuccess, onError);
-        //screen.lockOrientation('landscape');
+        var options = {
+            frequency: 3000
+        }; // Update every 3 seconds
+
+        navigator.compass.watchHeading(onSuccess, onError, options);
 
     },
     // Update DOM on a Received Event
