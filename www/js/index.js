@@ -40,12 +40,6 @@ var app = {
         navigator.vibrate(100);
 
 
-// set to either landscape
-        screen.lockOrientation('landscape');
-// allow user rotate
-        //screen.unlockOrientation();
-// access current orientation
-        alert('Orientation is ' + screen.orientation);
 
 
     },
@@ -62,6 +56,13 @@ var app = {
 
 window.addEventListener("orientationchange", function(){
     //alert(screen.orientation); // e.g. portrait
+    // set to either landscape
+        screen.lockOrientation('landscape');
+// allow user rotate
+        //screen.unlockOrientation();
+// access current orientation
+        alert('Orientation is ' + screen.orientation);
+
 });
 
 // Vibrate for 1 miliseconds -- https://github.com/apache/cordova-plugin-vibration
