@@ -551,6 +551,7 @@ a.swiper_read_more{
     bottom: 0px;
     overflow: scroll; 
     -webkit-overflow-scrolling: touch;
+    font-size: 10px;
 }
 .page_content{
     width:90%;

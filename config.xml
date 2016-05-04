@@ -4,7 +4,8 @@
     <author href="http://prysmasoft.com" email="info@prysmasoft.com">Prysma Software</author>
     <content src="index.html"/>
     <preference name="permissions" value="none"/>
-    <preference name="orientation" value="default"/>
+    <!--<preference name="orientation" value="default"/>-->
+    <preference name="orientation" value="landscape" /> <!-- portrait -->
     <preference name="target-device" value="universal"/>
     <preference name="fullscreen" value="true"/>
     <preference name="webviewbounce" value="true"/>
@@ -35,7 +36,8 @@
     <gap:plugin name="org.apache.cordova.media"/>
     <gap:plugin name="org.apache.cordova.network-information"/>
     <gap:plugin name="org.apache.cordova.splashscreen"/>
-    <gap:plugin name="org.apache.cordova.vibration"/>
+    <gap:plugin name="org.apache.cordova.vibration"/>    
+    <gap:plugin name="cordova-plugin-screen-orientation" source="npm" version="1.4.0" />
     <!--<gap:plugin name="cordova-plugin-battery-status" spec="1.1.0" source="pgb" />-->
     <gap:plugin name="cordova-plugin-vibration" spec="1.1.0" source="pgb" />
     <icon src="icon.png"/>

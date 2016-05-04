@@ -50,7 +50,7 @@
 
 
                             <div style="position: relative; width: 100%; margin-bottom: 15px;">
-                                <div style="display: inline-block; width: 100px;">
+                                <div style="display: inline-block; width: 50px;">
                                     <label>Cliente</label>
                                 </div>
                                 <div style="display: inline-block;">
@@ -59,7 +59,7 @@
                             </div>
 
                             <div style="position: relative; width: 100%; margin-bottom: 15px;">
-                                <div style="display: inline-block; width: 100px;">
+                                <div style="display: inline-block; width: 50px;">
                                     <label>Serie</label>
                                 </div>
                                 <div style="display: inline-block;">
@@ -110,24 +110,24 @@
                                         <tr>                                                
                                             <td>                                                
                                             </td>
-                                            <td style="text-align: right;">Subtotal</td>
-                                            <td style="text-align: right;" id="subtotal">
+                                            <td style="text-align: right;">Subtotal&nbsp;&nbsp;</td>
+                                            <td style="text-align: right; margin-left: 20px;" id="subtotal">
                                                 $0,00
                                             </td>
                                         </tr>                                            
                                         <tr>
                                             <td>                                                
                                             </td>
-                                            <td style="text-align: right;">Impuestos</td>
-                                            <td style="text-align: right;" id="impuestos">
+                                            <td style="text-align: right;">Impuestos&nbsp;&nbsp;</td>
+                                            <td style="text-align: right; margin-left: 20px;" id="impuestos">
                                                 $0,00
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>                                                
                                             </td>
-                                            <td style="text-align: right;">Total</td>
-                                            <td style="text-align: right;" id="total">
+                                            <td style="text-align: right;">Total&nbsp;&nbsp;</td>
+                                            <td style="text-align: right; margin-left: 20px;" id="total">
                                                 $0,00    
                                             </td>
                                         </tr>
@@ -189,7 +189,7 @@
                 newTableItem += "   <button class=\"btn\" id='" + totalChilds + "' onclick=\"removeTempInvoice(this.id)\" type=\"button\">X</button>";
                 newTableItem += "            </td>";
                 newTableItem += "<td>";
-                newTableItem += "                <input name='item_reference_" + totalChilds + "' list='productslist' id='item_reference_" + totalChilds + "' type='text' style='width:370px;'/>";
+                newTableItem += "                <input name='item_reference_" + totalChilds + "' list='productslist' id='item_reference_" + totalChilds + "' type='text' style='width:220px;'/>";
                 newTableItem += "            </td>";
                 /*                
                  newTableItem += "            <td>";
@@ -200,7 +200,7 @@
                  newTableItem += "            </td>";
                  */
                 newTableItem += "            <td>";
-                newTableItem += "                <input value='0' onkeyup='calculateTotal()' name='item_qty_" + totalChilds + "' id='item_qty_" + totalChilds + "' type='number' style='width:100px;'/>";
+                newTableItem += "                <input value='0' onkeyup='calculateTotal()' name='item_qty_" + totalChilds + "' id='item_qty_" + totalChilds + "' type='number' style='width:50px;'/>";
                 newTableItem += "            </td>";
 
                 newTableItem += "            <td>";
