@@ -38,10 +38,21 @@ var app = {
 
         console.log(navigator.vibrate);
         navigator.vibrate(100);
+
         
-        alert(navigator.compass);
-        
-         //screen.lockOrientation('landscape');
+
+        function onSuccess(heading) {
+            alert('Heading: ' + heading.magneticHeading);
+        }
+        ;
+
+        function onError(error) {
+            alert('CompassError: ' + error.code);
+        }
+        ;
+
+        navigator.compass.getCurrentHeading(onSuccess, onError);
+        //screen.lockOrientation('landscape');
 
     },
     // Update DOM on a Received Event
@@ -515,8 +526,9 @@ function syncToSystem(type) {
                         }
                     }
                 }
-                
-                alert(params);return;
+
+                alert(params);
+                return;
 
                 var url = "https://tufacturaelectronica.net/appmobile/ajaxcalls/syncTempInvoices.php";
                 $.ajax({
