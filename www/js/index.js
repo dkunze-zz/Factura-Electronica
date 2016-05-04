@@ -39,6 +39,8 @@ var app = {
         console.log(navigator.vibrate);
         navigator.vibrate(100);
         
+        window.plugins.orientationLock.lock("landscape");
+        
          //screen.lockOrientation('landscape');
 
     },
