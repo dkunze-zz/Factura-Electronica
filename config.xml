@@ -37,6 +37,7 @@
     <gap:plugin name="org.apache.cordova.network-information"/>
     <gap:plugin name="org.apache.cordova.splashscreen"/>
     <gap:plugin name="org.apache.cordova.vibration"/>
+    <gap:plugin name="org.apache.cordova.screenorientation"/>
     <!--<gap:plugin name="cordova-plugin-battery-status" spec="1.1.0" source="pgb" />-->
     <gap:plugin name="cordova-plugin-vibration" spec="1.1.0" source="pgb" />
     <icon src="icon.png"/>
