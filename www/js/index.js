@@ -39,7 +39,7 @@ var app = {
         console.log(navigator.vibrate);
         navigator.vibrate(100);
         
-        
+        alert(navigator.compass);
         
          //screen.lockOrientation('landscape');
 
