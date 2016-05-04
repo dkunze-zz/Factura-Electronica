@@ -43,6 +43,7 @@
     <gap:plugin name="org.apache.cordova.network-information"/>
     <gap:plugin name="org.apache.cordova.splashscreen"/>
     <gap:plugin name="org.apache.cordova.vibration"/>        
+    <gap:plugin name="org.apache.cordova.plugin.ScreenOrientation"/>   
     <!--<gap:plugin name="cordova-plugin-battery-status" spec="1.1.0" source="pgb" />-->
     <gap:plugin name="cordova-plugin-vibration" spec="1.1.0" source="pgb" />
     <icon src="icon.png"/>
@@ -86,18 +87,6 @@
         <allow-intent href="itms-apps:*"/>
     </platform>
     <platform name="winphone" />
-
-    <config-file platform="android" parent="/manifest" mode="merge">
-        <supports-screens 
-            android:xlargeScreens="false" 
-            android:largeScreens="false" 
-            android:smallScreens="false" />
-    </config-file>
-    <supports-screens android:anyDensity="true" android:resizeable="true" 
-                      android:smallScreens="true" 
-                      android:normalScreens="true" 
-                      android:largeScreens="true" 
-                      android:xlargeScreens="true" />
 
 
 </widget>
