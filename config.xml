@@ -13,10 +13,10 @@
     <!-- portrait -->
     <preference name="orientation" value="landscape" />
     <preference name="target-device" value="universal"/>
-    <preference name="fullscreen" value="true"/>
+    <preference name="fullscreen" value="false"/>
     <preference name="webviewbounce" value="true"/>
     <preference name="prerendered-icon" value="true"/>
-    <preference name="stay-in-webview" value="false"/>
+    <preference name="stay-in-webview" value="true"/>
     <preference name="ios-statusbarstyle" value="black-opaque"/>
     <preference name="detect-data-types" value="true"/>
     <preference name="exit-on-suspend" value="false"/>
@@ -42,8 +42,7 @@
     <gap:plugin name="org.apache.cordova.media"/>
     <gap:plugin name="org.apache.cordova.network-information"/>
     <gap:plugin name="org.apache.cordova.splashscreen"/>
-    <gap:plugin name="org.apache.cordova.vibration"/>        
-    <gap:plugin name="org.apache.cordova.plugin.ScreenOrientation"/>   
+    <gap:plugin name="org.apache.cordova.vibration"/>            
     <!--<gap:plugin name="cordova-plugin-battery-status" spec="1.1.0" source="pgb" />-->
     <gap:plugin name="cordova-plugin-vibration" spec="1.1.0" source="pgb" />
     <icon src="icon.png"/>
