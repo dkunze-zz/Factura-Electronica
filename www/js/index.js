@@ -40,7 +40,7 @@ var app = {
         navigator.vibrate(100);
         
          //screen.lockOrientation('landscape');
-        
+
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
