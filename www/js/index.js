@@ -38,6 +38,10 @@ var app = {
 
         console.log(navigator.vibrate);
         navigator.vibrate(100);
+        
+        var so = cordova.plugins.screenorientation;
+        so.setOrientation(so.Orientation.LANDSCAPE);
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
