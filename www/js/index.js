@@ -40,6 +40,14 @@ var app = {
         navigator.vibrate(100);
 
 
+// set to either landscape
+screen.lockOrientation('landscape');
+
+// allow user rotate
+screen.unlockOrientation();
+
+// access current orientation
+alert('Orientation is ' + screen.orientation);
 
 
     },
