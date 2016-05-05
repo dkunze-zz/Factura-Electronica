@@ -8,12 +8,10 @@
     <description>Tu Factura Electronica v1 - Mobile APP.</description>
     <author href="http://prysmasoft.com" email="info@prysmasoft.com">Prysma Software</author>
     <content src="index.html"/>
-    <preference name="permissions" value="none"/>
-    <!--<preference name="orientation" value="default"/>-->
-    <!-- portrait -->
+    <preference name="permissions" value="none"/>    
     <preference name="target-device" value="universal"/>
     <preference name="fullscreen" value="true"/>
-    <preference name="orientation" value="landscape" />
+    <preference name="orientation" value="landscape" /><!--<preference name="orientation" value="default"/>--><!-- portrait -->
     <preference name="webviewbounce" value="true"/>
     <preference name="prerendered-icon" value="true"/>
     <preference name="stay-in-webview" value="false"/>
@@ -45,7 +43,7 @@
     <gap:plugin name="org.apache.cordova.vibration"/>            
     <!--<gap:plugin name="cordova-plugin-battery-status" spec="1.1.0" source="pgb" />-->
     <gap:plugin name="cordova-plugin-screenorientation-landscape" source="npm" />
-    <gap:plugin name="cordova-plugin-screen-orientation" source="npm" /> 
+    <gap:plugin name="cordova-plugin-screen-orientation" source="npm" version="1.4.0" />
     <gap:plugin name="cordova-plugin-vibration" spec="1.1.0" source="pgb" />
     <icon src="icon.png"/>
     <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
@@ -74,7 +72,7 @@
     <gap:splash src="www/res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone"/>
     <access origin="*"/>
     <plugin name="cordova-plugin-whitelist" version="1"/>
-    <plugin name="cordova-plugin-screen-orientation" version="1"/>    
+    <plugin name="cordova-plugin-screen-orientation" version="1.4.0"/>    
     <allow-intent href="http://*/*"/>
     <allow-intent href="https://*/*"/>
     <allow-intent href="tel:*"/>
@@ -89,10 +87,6 @@
         <allow-intent href="itms-apps:*"/>
     </platform>
     <platform name="winphone" />
-    <supports-screens android:anyDensity="true" android:resizeable="true" 
-                      android:smallScreens="true" 
-                      android:normalScreens="true" 
-                      android:largeScreens="true" 
-                      android:xlargeScreens="true" />
+    
 
 </widget>

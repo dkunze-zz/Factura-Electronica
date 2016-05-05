@@ -63,7 +63,6 @@ function changeOrientation()
         console.log('Orientation Error: ' + ex);
         alert("error " + ex);
     }
-
 }
 
 window.addEventListener("orientationchange", function () {
