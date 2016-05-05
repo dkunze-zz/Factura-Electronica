@@ -39,9 +39,6 @@ var app = {
         //console.log(navigator.vibrate);
         navigator.vibrate(100);
 
-
-
-
         //screen.unlockOrientation();// allow user rotate
         // access current orientation
         //alert('Orientation is ' + screen.orientation);
@@ -58,13 +55,15 @@ var app = {
 };
 
 document.addEventListener('deviceready', changeOrientation(), false);
-function changeOrientation() {
-    
+function changeOrientation()
+{
     try {
         screen.lockOrientation('landscape');
     } catch (ex) {
+        console.log('Orientation Error: ' + ex);
         alert("error " + ex);
     }
+
 }
 
 window.addEventListener("orientationchange", function () {
