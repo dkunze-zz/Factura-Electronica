@@ -36,12 +36,15 @@ var app = {
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
 
-        console.log(navigator.vibrate);
+        //console.log(navigator.vibrate);
         navigator.vibrate(100);
 
 
 
 
+        //screen.unlockOrientation();// allow user rotate
+        // access current orientation
+        //alert('Orientation is ' + screen.orientation);
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
@@ -54,14 +57,18 @@ var app = {
     }
 };
 
-window.addEventListener("orientationchange", function(){
-    //alert(screen.orientation); // e.g. portrait
-    // set to either landscape
+document.addEventListener('deviceready', changeOrientation(), false);
+function changeOrientation() {
+    
+    try {
         screen.lockOrientation('landscape');
-// allow user rotate
-        //screen.unlockOrientation();
-// access current orientation
-        alert('Orientation is ' + screen.orientation);
+    } catch (ex) {
+        alert("error " + ex);
+    }
+}
+
+window.addEventListener("orientationchange", function () {
+    //alert('Orientation is ' + screen.orientation);
 
 });
 
